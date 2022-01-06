@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}home{% endblock %}
+
+{% block content %}
+<p>Welcome to {{ boardname }}. This is the index page.</p>
+<p> You can <a href="/submit">Submit a post</a>.</p>
+{% endblock %}
+
+{% block footer %}
+<p>hosted on {{ boardname }}</p>
+{% endblock %}

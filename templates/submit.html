@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}submit{% endblock %}
+
+{% block content %}
+{% if submission_success %}
+<h2>Your submission was successfully posted!</h2>
+{% endif %}
+<form action="/submit/" method="post">
+    <p>Submission:</p>
+    <input type="text" name="submission_text"/>
+    <p>Tripcode:</p>
+    <input type="text" name="tripcode"/>
+    <input type="submit" value="submit"/>
+</form>
+{% endblock %}
+
+
+
