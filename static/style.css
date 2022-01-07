@@ -27,7 +27,7 @@ body {
     overflow: hidden;
 }
 
-.post * {
+.post p {
     display: block;
     margin: 0.5em;
 }
@@ -36,6 +36,8 @@ body {
     width: 10em;
     height: 10em;
     float: left;
+    display: block;
+    margin: 0.5em;
     object-fit: cover;
 }
 
@@ -57,4 +59,9 @@ body {
 #submit_form #submit {
     margin-top: 1em;
     font-size: 1em;
+}
+
+#footer {
+    border-top: 2px solid #404040;
+    margin-top: 10%;
 }
