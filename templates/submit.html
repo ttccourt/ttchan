@@ -5,6 +5,8 @@
 {% block content %}
 {% if submission_success %}
 <h2>Your submission was successfully posted!</h2>
+{% elif submission_success == False %}
+<h2>An image is required!</h2>
 {% endif %}
 
 <form action="/submit/" enctype="multipart/form-data" method="post" id="submit_form">

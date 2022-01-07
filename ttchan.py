@@ -31,10 +31,14 @@ def favicon():
 
 @app.route("/submit/", methods=['POST', 'GET'])
 def submit():
-    submission_success = False
+    submission_success = None
     if f.request.method == 'POST':
         image_name = str(uuid.uuid4())
         image = f.request.files['image']
+
+        if not image:
+            return f.render_template('submit.html', boardname=BOARD_NAME, submission_success=False)
+
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], image_name + '.jpg'))
         submission = [
             image_name,
