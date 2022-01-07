@@ -9,7 +9,12 @@ app = f.Flask(__name__)
 
 @app.route("/")
 def index():
-    return f.render_template('index.html', boardname=BOARD_NAME)
+    return f.render_template('index.html', boardname=BOARD_NAME, posts=posts)
+
+
+@app.route("/favicon.ico")
+def favicon():
+    return f.send_file(os.path.join(app.root_path, 'static', 'logo.ico'))
 
 
 @app.route("/submit/", methods=['POST', 'GET'])
