@@ -4,5 +4,14 @@
 
 {% block content %}
 <p>Welcome to {{ boardname }}. This is the index page.</p>
-<p> You can <a href="/submit">Submit a post</a>.</p>
+
+{% for post in posts %}
+<div class="post">
+    <img class="post_img" src="/img/{{ post.image_name }}">
+    <p class="post_text">{{ post.text_content }}</p>
+    <p class="tripcode">{{ post.tripcode }}</p>
+</div>
+{% endfor %}
+
+
 {% endblock %}
