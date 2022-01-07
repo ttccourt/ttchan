@@ -42,3 +42,19 @@ body {
 .post .tripcode {
     font-weight: bold;
 }
+
+.input_group {
+    display: block;
+    padding: 0.5em;
+    width: 80%;
+}
+
+.input_group input {
+    float: right;
+    text-align: left;
+}
+
+#submit_form #submit {
+    margin-top: 1em;
+    font-size: 1em;
+}

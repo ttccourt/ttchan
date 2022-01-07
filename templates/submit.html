@@ -6,15 +6,32 @@
 {% if submission_success %}
 <h2>Your submission was successfully posted!</h2>
 {% endif %}
-<form action="/submit/" enctype="multipart/form-data" method="post">
-    <p>Image (must be JPEG):</p>
-    <input type="file" name="image" accept="image/jpeg"/>
-    <p>Submission:</p>
-    <input type="text" name="submission_text"/>
-    <p>Tripcode:</p>
-    <input type="text" name="tripcode"/>
-    <input type="submit" value="submit"/>
+
+<form action="/submit/" enctype="multipart/form-data" method="post" id="submit_form">
+    <div class="input_group">
+        <label for="image">Image (must be JPEG):</label>
+        <input id="image" type="file" name="image" accept="image/jpeg" onchange="updateButton()" hidden/>
+        <input id="image_visible_button" type="button" value="Upload an image" onclick="openDialog()"/>
+    </div>
+    <div class="input_group">
+        <label for="submission_text">Submission:</label>
+        <input id="submission_text" type="text" name="submission_text"/>
+    </div>
+    <div class="input_group">
+        <label for="tripcode">Tripcode:</label>
+        <input id="tripcode" type="text" name="tripcode"/>
+    </div>
+    <input id="submit" type="submit" value="submit"/>
 </form>
+<script>
+    function openDialog() {
+        document.getElementById('image').click();
+    }
+    function updateButton() {
+        document.getElementById('image_visible_button').value = "Image selected!";
+    }
+
+</script>
 {% endblock %}
 
 
