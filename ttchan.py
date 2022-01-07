@@ -1,10 +1,9 @@
 import flask as f
-import os
-import uuid
-import csv
+import os, uuid, hashlib, csv
 
 BOARD_NAME = "ttchan"
 POSTS_FILE = "posts.txt"
+TRIP_SALT = "eHl8LO0vs8E6PGqY"
 
 app = f.Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 1000000
@@ -14,10 +13,10 @@ posts = []
 
 
 class Post:
-    def __init__(self, image_name, text_content, tripcode):
+    def __init__(self, image_name, tripcode, text_content):
         self.image_name = image_name
-        self.text_content = text_content
         self.tripcode = tripcode
+        self.text_content = text_content
 
 
 @app.route("/")
@@ -39,7 +38,7 @@ def submit():
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], image_name + '.jpg'))
         submission = [
             image_name,
-            f.request.form['tripcode'],
+            get_tripcode(f.request.form['tripcode']),
             f.request.form['submission_text']
         ]
         with open(POSTS_FILE, 'a', newline='') as pf:
@@ -66,6 +65,13 @@ def loadposts():
     except FileNotFoundError:
         with open(POSTS_FILE, 'x') as pf:
             pass  # create if doesn't exist
+
+
+def get_tripcode(password):
+    if not password:
+        return "Anon"  # avoid salting an empty string and allowing bruteforce cracking of the salt
+    salted_password = (password + TRIP_SALT).encode()
+    return hashlib.md5(salted_password).hexdigest()
 
 
 if __name__ == '__main__':

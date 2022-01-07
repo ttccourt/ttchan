@@ -3,13 +3,11 @@
 {% block title %}home{% endblock %}
 
 {% block content %}
-<p>Welcome to {{ boardname }}. This is the index page.</p>
-
 {% for post in posts %}
 <div class="post">
     <img class="post_img" src="/img/{{ post.image_name }}">
-    <p class="post_text">{{ post.text_content }}</p>
     <p class="tripcode">{{ post.tripcode }}</p>
+    <p class="post_text">{{ post.text_content }}</p>
 </div>
 {% endfor %}
 

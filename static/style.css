@@ -18,3 +18,27 @@ body {
     display: block;
     padding: 1em 0;
 }
+
+.post {
+    border: 1px solid #404040;
+    border-radius: 5px;
+    padding: 1em;
+    margin: 1em;
+    overflow: hidden;
+}
+
+.post * {
+    display: block;
+    margin: 0.5em;
+}
+
+.post img {
+    width: 10em;
+    height: 10em;
+    float: left;
+    object-fit: cover;
+}
+
+.post .tripcode {
+    font-weight: bold;
+}
