@@ -10,7 +10,13 @@
 <body>
 <div id="header">
     {% block header %}
-    <h1> {{ self.title() }} </h1>
+    <h1><a href="/">{{ boardname }}</a></h1>
+    <h2>{{ self.title() }}</h2>
+    <nav>
+        <a href="/submit/">submit a post</a>
+        <a href="/faq/">faq</a>
+    </nav>
+
     {% endblock %}
 </div>
 <div id="content">
@@ -19,7 +25,7 @@
 </div>
 <div id="footer">
     {% block footer %}
-    <p>hosted on {{ boardname }} - <a href="/">back to the homepage</a></p>
+    <p><a href="/">{{ boardname }}</a>. all rights reserved.</p>
     {% endblock %}
 </div>
 </body>

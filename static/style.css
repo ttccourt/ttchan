@@ -1,3 +1,20 @@
 * {
-    color: red;
+    color: #202020
+}
+
+body {
+    max-width: 80%;
+    margin: 5% 20%;
+    font-family: sans-serif;
+    background-color: #DDDDDD
+}
+
+#header h1, #header h2 {
+    display: inline;
+    padding-right: 0.5rem;
+}
+
+#header nav {
+    display: block;
+    padding: 1em 0;
 }
