@@ -9,6 +9,11 @@ body {
     background-color: #DDDDDD
 }
 
+#header {
+    border-bottom: 2px solid #404040;
+    margin-bottom: 5%;
+}
+
 #header h1, #header h2 {
     display: inline;
     padding-right: 0.5rem;
@@ -48,17 +53,30 @@ body {
 .input_group {
     display: block;
     padding: 0.5em;
-    width: 80%;
+    width: 100%;
+    overflow: hidden;
 }
 
 .input_group input {
     float: right;
-    text-align: left;
+    width: 20%;
 }
+
+
+.input_group textarea {
+    text-align: left;
+    direction: rtl;
+    text-align: left;
+    float: right;
+    width: 80%;
+    }
 
 #submit_form #submit {
     margin-top: 1em;
-    font-size: 1em;
+    font-size: 1.25em;
+    float: right;
+    width: 20%;
+    font-weight: bold;
 }
 
 #footer {
