@@ -21,6 +21,7 @@ class Post:
 
 @app.route("/")
 def index():
+    loadposts()
     return f.render_template('index.html', boardname=BOARD_NAME, posts=posts)
 
 
@@ -49,7 +50,6 @@ def submit():
             pf = csv.writer(pf)
             pf.writerow(submission)
             submission_success = True
-        posts.append(Post(*submission))
 
     return f.render_template('submit.html', boardname=BOARD_NAME, submission_success=submission_success)
 
@@ -61,6 +61,8 @@ def get_image(img_uuid):
 
 
 def loadposts():
+    global posts
+    posts = []
     try:
         with open(POSTS_FILE, 'r') as pf:
             pf = csv.reader(pf)
@@ -79,5 +81,4 @@ def get_tripcode(password):
 
 
 if __name__ == '__main__':
-    loadposts()
-    app.run('0.0.0.0', 80, True)
+    app.run('0.0.0.0', 80, False)
