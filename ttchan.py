@@ -79,6 +79,10 @@ def get_tripcode(password):
     salted_password = (password + TRIP_SALT).encode()
     return hashlib.md5(salted_password).hexdigest()
 
+def setup():
+    if not os.path.isdir("images"):
+        os.mkdir("images")
 
 if __name__ == '__main__':
+    setup()
     app.run('0.0.0.0', 80, False)
