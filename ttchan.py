@@ -34,13 +34,15 @@ def favicon():
 def submit():
     submission_success = None
     if f.request.method == 'POST':
-        image_name = str(uuid.uuid4())
         image = f.request.files['image']
+        extension = image.filename.split(".")[-1]
+
+        image_name = str(uuid.uuid4()) + "." + extension
 
         if not image:
             return f.render_template('submit.html', boardname=BOARD_NAME, submission_success=False)
 
-        image.save(os.path.join(app.config['UPLOAD_FOLDER'], image_name + '.jpg'))
+        image.save(os.path.join(app.config['UPLOAD_FOLDER'], image_name))
         submission = [
             image_name,
             get_tripcode(f.request.form['tripcode']),
@@ -54,10 +56,10 @@ def submit():
     return f.render_template('submit.html', boardname=BOARD_NAME, submission_success=submission_success)
 
 
-@app.route("/img/<img_uuid>")
-def get_image(img_uuid):
-    print("getting image " + img_uuid)
-    return f.send_from_directory(app.config['UPLOAD_FOLDER'], img_uuid + '.jpg')
+@app.route("/img/<img_name>")
+def get_image(img_name):
+    print("getting image " + img_name)
+    return f.send_from_directory(app.config['UPLOAD_FOLDER'], img_name)
 
 
 def loadposts():

@@ -5,7 +5,7 @@
 {% block content %}
 {% for post in posts %}
 <div class="post">
-    <a href="/img/{{ post.image_name }}"><img class="post_img" src="/img/{{ post.image_name }}"></a>
+	<a href="/img/{{ post.image_name }}"><img class="post_img" src="/img/{{ post.image_name }}"></a>
     <p class="tripcode">{{ post.tripcode }}</p>
     <p class="post_text">{{ post.text_content }}</p>
 </div>

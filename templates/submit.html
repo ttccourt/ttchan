@@ -11,8 +11,8 @@
 
 <form action="/submit/" enctype="multipart/form-data" method="post" id="submit_form">
     <div class="input_group">
-        <label for="image">Image (must be JPEG):</label>
-        <input id="image" type="file" name="image" accept="image/jpeg" onchange="updateButton()" hidden/>
+        <label for="image">Image (jpeg, png):</label>
+        <input id="image" type="file" name="image" accept="image/jpeg,image/png" onchange="updateButton()" hidden/>
         <input id="image_visible_button" type="button" value="Upload an image" onclick="openDialog()"/>
     </div>
     <div class="input_group">
